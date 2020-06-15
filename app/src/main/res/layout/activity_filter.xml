@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FilterActivity">
+
+    <TextView
+        android:id="@+id/filter_tv_title"
+        android:layout_width="308dp"
+        android:layout_height="56dp"
+        android:fontFamily="@font/arizonia"
+        android:text="@string/title_filter"
+        android:textAlignment="center"
+        android:textColor="@color/colorMain"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@+id/filter_iv_img"
+        app:layout_constraintEnd_toEndOf="@+id/filter_iv_img"
+        app:layout_constraintStart_toStartOf="@+id/filter_iv_img"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.26" />
+
+    <ImageView
+        android:id="@+id/filter_iv_img"
+        android:layout_width="338dp"
+        android:layout_height="299dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.29000002" />
+
+    <TextView
+        android:id="@+id/filter_tv_filter"
+        android:layout_width="204dp"
+        android:layout_height="40dp"
+        android:fontFamily="@font/arizonia"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="@color/colorMain"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/filter_iv_img"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="@+id/filter_iv_img"
+        app:layout_constraintTop_toBottomOf="@+id/filter_iv_img"
+        app:layout_constraintVertical_bias="0.084" />
+
+    <ImageButton
+        android:id="@+id/filter_ibtn_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/filter_tv_filter"
+        app:layout_constraintEnd_toEndOf="@+id/filter_iv_img"
+        app:layout_constraintStart_toEndOf="@+id/filter_tv_filter"
+        app:layout_constraintTop_toTopOf="@+id/filter_tv_filter"
+        app:srcCompat="@android:drawable/ic_media_ff" />
+
+    <ImageButton
+        android:id="@+id/filter_ibtn_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/filter_tv_filter"
+        app:layout_constraintEnd_toStartOf="@+id/filter_tv_filter"
+        app:layout_constraintStart_toStartOf="@+id/filter_iv_img"
+        app:layout_constraintTop_toTopOf="@+id/filter_tv_filter"
+        app:srcCompat="@android:drawable/ic_media_rew" />
+
+    <Switch
+        android:id="@+id/filter_sw_filter"
+        android:layout_width="130dp"
+        android:layout_height="45dp"
+        android:fontFamily="@font/arizonia"
+        android:text="Regular"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/filter_tv_filter"
+        app:layout_constraintStart_toStartOf="@+id/filter_tv_filter"
+        app:layout_constraintTop_toBottomOf="@+id/filter_tv_filter"
+        app:layout_constraintVertical_bias="0.18" />
+
+    <Button
+        android:id="@+id/filter_btn_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/almendra_display"
+        android:text="@string/save"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/filter_btn_cancel"
+        app:layout_constraintEnd_toEndOf="@+id/filter_iv_img"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/filter_sw_filter"
+        app:layout_constraintTop_toTopOf="@+id/filter_btn_cancel" />
+
+    <Button
+        android:id="@+id/filter_btn_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/almendra_display"
+        android:text="@android:string/cancel"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/filter_sw_filter"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/filter_iv_img"
+        app:layout_constraintTop_toTopOf="@+id/filter_sw_filter"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/filter_btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/almendra_display"
+        android:text="@string/back"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/filter_sw_examples"
+        app:layout_constraintEnd_toEndOf="@+id/filter_btn_save"
+        app:layout_constraintStart_toEndOf="@+id/filter_sw_examples"
+        app:layout_constraintTop_toTopOf="@+id/filter_sw_examples" />
+
+    <Button
+        android:id="@+id/filter_btn_reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/almendra_display"
+        android:text="@string/reset"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/filter_sw_examples"
+        app:layout_constraintEnd_toStartOf="@+id/filter_sw_examples"
+        app:layout_constraintStart_toStartOf="@+id/filter_btn_cancel"
+        app:layout_constraintTop_toTopOf="@+id/filter_sw_examples" />
+
+    <Switch
+        android:id="@+id/filter_sw_examples"
+        android:layout_width="109dp"
+        android:layout_height="36dp"
+        android:fontFamily="@font/arizonia"
+        android:text="Example"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/filter_sw_filter"
+        app:layout_constraintStart_toStartOf="@+id/filter_sw_filter"
+        app:layout_constraintTop_toBottomOf="@+id/filter_sw_filter"
+        app:layout_constraintVertical_bias="0.22000003" />
+
+    <TextView
+        android:id="@+id/filter_tv_e1"
+        android:layout_width="106dp"
+        android:layout_height="22dp"
+        android:fontFamily="@font/arizonia"
+        android:text="@string/e1"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/filter_ibtn_camera"
+        app:layout_constraintEnd_toEndOf="@+id/filter_iv_img"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/filter_iv_img"
+        app:layout_constraintTop_toTopOf="@+id/filter_ibtn_camera" />
+
+    <ImageButton
+        android:id="@+id/filter_ibtn_camera"
+        android:layout_width="52dp"
+        android:layout_height="32dp"
+        android:background="#FFFFFF"
+        android:fontFamily="@font/arizonia"
+        android:src="@android:drawable/ic_menu_camera"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/filter_iv_img"
+        app:layout_constraintEnd_toEndOf="@+id/filter_iv_img"
+        app:layout_constraintStart_toStartOf="@+id/filter_iv_img"
+        app:layout_constraintTop_toBottomOf="@+id/filter_tv_title" />
+
+    <TextView
+        android:id="@+id/filter_tv_e2"
+        android:layout_width="106dp"
+        android:layout_height="22dp"
+        android:fontFamily="@font/arizonia"
+        android:text="@string/e2"
+        android:textAlignment="center"
+        android:textColor="@color/colorMain"
+        android:textSize="18sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/filter_iv_img"
+        app:layout_constraintEnd_toEndOf="@+id/filter_iv_img"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/filter_iv_img"
+        app:layout_constraintTop_toBottomOf="@+id/filter_tv_title" />
+</androidx.constraintlayout.widget.ConstraintLayout>
