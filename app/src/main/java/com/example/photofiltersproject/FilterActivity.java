@@ -2,10 +2,12 @@ package com.example.photofiltersproject;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.app.Activity;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
@@ -34,6 +36,14 @@ public class FilterActivity extends AppCompatActivity {
     private ImageView imageView;
     private static final int MY_CAMERA_PERMISSION_CODE = 100;
     private static final int MY_EXTERNAL_PERMISSION_CODE = 200;
+    int PERMISSION_ALL = 1;
+    String[] PERMISSIONS = {
+            android.Manifest.permission.READ_CONTACTS,
+            android.Manifest.permission.WRITE_CONTACTS,
+            android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            android.Manifest.permission.READ_SMS,
+            android.Manifest.permission.CAMERA
+    };
     private int filterIndex = 0;
     private int exampleInt = 1;
     private boolean isRegular = true;
@@ -216,7 +226,7 @@ public class FilterActivity extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == MY_CAMERA_PERMISSION_CODE)
         {
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED)
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED || grantResults[1] == PackageManager.PERMISSION_GRANTED)
             {
                 Toast.makeText(this, "camera permission granted", Toast.LENGTH_LONG).show();
                 Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
@@ -240,6 +250,16 @@ public class FilterActivity extends AppCompatActivity {
             }
         }
 
+    }
+    public static boolean hasPermissions(Context context, String... permissions) {
+        if (context != null && permissions != null) {
+            for (String permission : permissions) {
+                if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     @Override

@@ -44,6 +44,18 @@ public class Dal extends SQLiteAssetHelper {
         return ret;
     }
 
+    //check if user[username].code in users matches code
+    public boolean users_check_username_code_matches_code(String username, String code)
+    {
+        boolean ret;
+        SQLiteDatabase db = getWritableDatabase();
+        String qr = "SELECT * FROM users WHERE username = '"+username+"' , code ='"+code+"'";
+        Cursor c = db.rawQuery(qr,null);
+        ret = c.moveToFirst();
+        c.close();
+        return ret;
+    }
+
     //Adders:
 
     //add user to users
@@ -70,6 +82,37 @@ public class Dal extends SQLiteAssetHelper {
         {
             ret = new User(c.getString(c.getColumnIndex("username")),c.getString(c.getColumnIndex("password")),c.getLong(c.getColumnIndex("open")),c.getString(c.getColumnIndex("code")));
         }
+        c.close();
+        return ret;
+    }
+
+    //get user[username].code from users
+    public String users_get_code_by_username(String username)
+    {
+        String ret = "";
+        SQLiteDatabase db = getWritableDatabase();
+        String qr = "SELECT code FROM users WHERE username = '"+username+"'";
+        Cursor c = db.rawQuery(qr,null);
+        if(c.moveToFirst())
+        {
+            ret = c.getString(c.getColumnIndex("code"));
+        }
+        c.close();
+        return ret;
+    }
+
+    //get user[username].open from users
+    public boolean users_get_open_by_username(String username)
+    {
+        boolean ret = true;
+        SQLiteDatabase db = getWritableDatabase();
+        String qr = "SELECT open FROM users WHERE username = '"+username+"'";
+        Cursor c = db.rawQuery(qr,null);
+        if(c.moveToFirst())
+        {
+            ret = c.getLong(c.getColumnIndex("open"))!=0;
+        }
+        c.close();
         return ret;
     }
 
@@ -100,14 +143,42 @@ public class Dal extends SQLiteAssetHelper {
     public ArrayList<Photo> photos_get_photos()
     {
         ArrayList<Photo> ret = new ArrayList<>();
-        //fix
+        Photo photo = new Photo();
+        SQLiteDatabase db = getWritableDatabase();
+        String qr = "SELECT * FROM photos";
+        Cursor c = db.rawQuery(qr,null);
+        if(c.moveToFirst())
+        {
+            do {
+                photo.setUsername(c.getString(c.getColumnIndex("username")));
+                photo.setPremium(c.getLong(c.getColumnIndex("premium")));
+                photo.setFilter(c.getString(c.getColumnIndex("filter")));
+                photo.setOpen(c.getLong(c.getColumnIndex("open")));
+                photo.setPhoto(c.getBlob(c.getColumnIndex("photo")));
+                ret.add(photo);
+            }while (c.moveToNext());
+        }
         return ret;
     }
     //get photos[username]
     public ArrayList<Photo> photos_get_photos_by_username(String username)
     {
         ArrayList<Photo> ret = new ArrayList<>();
-        //fix!
+        Photo photo = new Photo();
+        SQLiteDatabase db = getWritableDatabase();
+        String qr = "SELECT * FROM photos WHERE username = '"+username+"'";
+        Cursor c = db.rawQuery(qr,null);
+        if(c.moveToFirst())
+        {
+            do {
+                photo.setUsername(c.getString(c.getColumnIndex("username")));
+                photo.setPremium(c.getLong(c.getColumnIndex("premium")));
+                photo.setFilter(c.getString(c.getColumnIndex("filter")));
+                photo.setOpen(c.getLong(c.getColumnIndex("open")));
+                photo.setPhoto(c.getBlob(c.getColumnIndex("photo")));
+                ret.add(photo);
+            }while (c.moveToNext());
+        }
         return ret;
     }
 
@@ -137,15 +208,16 @@ public class Dal extends SQLiteAssetHelper {
     //Adders:
 
     //add photo to photos
-    public void photos_add_photo(String username, long premium, String filter, byte[] photo)
+    public void photos_add_photo(String username, long premium, String filter, byte[] photo, long open)
     {
         SQLiteDatabase db = getWritableDatabase();
-        String sqlInsert = "INSERT INTO photos (username ,premioum, filter, photo) VALUES(?,?,?,?)";
+        String sqlInsert = "INSERT INTO photos (username ,premioum, filter, photo,open) VALUES(?,?,?,?,?)";
         SQLiteStatement statement = db.compileStatement(sqlInsert);
         statement.bindString(1,username);
         statement.bindLong(2,premium);
         statement.bindString(3,filter);
         statement.bindBlob(4,photo);
+        statement.bindLong(5,open);
         statement.execute();
     }
 

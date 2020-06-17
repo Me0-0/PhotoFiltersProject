@@ -1,8 +1,11 @@
 package com.example.photofiltersproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
@@ -14,4 +17,5 @@ public class MainActivity extends AppCompatActivity {
         Intent filters = new Intent(MainActivity.this, FilterActivity.class);
         startActivity(filters);
     }
+
 }
