@@ -49,15 +49,16 @@ public class FilterActivity extends AppCompatActivity {
     private boolean isRegular = true;
     private boolean isCamera = false;
     private String username;
-    private boolean isUser = true;
+    private boolean isUser;
     Date currentTime;
-
+    Dal dal;
     Button saveBtn, cancelBtn, backBtn, resetBtn;
     ImageButton cameraBtn, rightBtn, leftBtn;
     TextView ex1Tv,ex2Tv,filterTv;
     Switch filterSw, examplesSw;
     Bitmap bitmap, source, tmpBitmap;
     Toast exampleT, premiumT, alert;
+    Intent intent;
     String[] regularFiltersStrArray = new String[]{"None", "UpsideDown", "Right2Left", "BlackNWhite", "B/W but Red", "B/W but Green", "B/W but Blue"};
     String[] premiumFiltersStrArray = new String[]{"None", "Shades of Red", "Shades of Green", "Shades of Blue", "Red2White", "Red2Black", "Red2Gray", "Green2White", "Green2Black", "Green2Gray", "blue2White", "Blue2Black", "Blue2Gray", "Negative"};
     @Override
@@ -65,6 +66,13 @@ public class FilterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filter);
 
+        dal = new Dal(this);
+        intent = this.getIntent();
+        isUser = intent.getBooleanExtra("isUser",false);
+        if(isUser)
+        {
+            username = intent.getStringExtra("username");
+        }
         exampleT  =  Toast.makeText(getApplicationContext(), "Error: Cannot Change Photo To Example While Camera Is On, Press Cancel To Enable Examples", Toast.LENGTH_SHORT);
         premiumT =  Toast.makeText(getApplicationContext(), "Error: Only Logged Users Can Use Premium Filters", Toast.LENGTH_SHORT);
         alert = Toast.makeText(getApplicationContext(), "Photo Saved Successfully", Toast.LENGTH_SHORT);
@@ -87,8 +95,19 @@ public class FilterActivity extends AppCompatActivity {
         this.backBtn = (Button)findViewById(R.id.filter_btn_back);
         this.saveBtn = (Button)findViewById(R.id.filter_btn_save);
 
+
+        isRegular = true;
+        isCamera = false;
+        filterIndex = 0;
+        exampleInt = 1;
+        filterSw.setChecked(false);
+        examplesSw.setChecked(false);
+        setFiltersTextView();
         setNewBitmapSource(true);
         setNewBitmapTmp();
+
+        filterSw.setTextOn("Premium");
+        filterSw.setTextOff("Regular");
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,6 +119,11 @@ public class FilterActivity extends AppCompatActivity {
                 else
                 {
                     MediaStore.Images.Media.insertImage(getContentResolver(), tmpBitmap, filename , "PhotoFiltersProject");
+                }
+                if(isUser)
+                {
+                    //dal.photos_add_photo(username,isRegular?0:1,filterTv.getText().toString(),Photo.getBitmapToByte(tmpBitmap),dal.users_get_open_by_username(username)?1:0);
+                    Toast.makeText(getApplicationContext(),"Save To DB: Coming soon, note - the photo was saved to gallery", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -160,6 +184,7 @@ public class FilterActivity extends AppCompatActivity {
                 else
                 {
                     filterIndex = 0;
+                    filterSw.setText(isChecked?"Premium":"Regular");
                     isRegular = !isChecked;
                     setFiltersTextView();
                     setNewBitmapTmp();
@@ -226,7 +251,7 @@ public class FilterActivity extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == MY_CAMERA_PERMISSION_CODE)
         {
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED || grantResults[1] == PackageManager.PERMISSION_GRANTED)
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED)
             {
                 Toast.makeText(this, "camera permission granted", Toast.LENGTH_LONG).show();
                 Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
@@ -242,7 +267,7 @@ public class FilterActivity extends AppCompatActivity {
             if(grantResults[0] == PackageManager.PERMISSION_GRANTED)
             {
                 Toast.makeText(this, "external permission granted", Toast.LENGTH_LONG).show();
-                MediaStore.Images.Media.insertImage(getContentResolver(), tmpBitmap, "PhotoFiltersProject-"+System.currentTimeMillis()+".png" , "PhotoFiltersProject");
+                MediaStore.Images.Media.insertImage(getContentResolver(), tmpBitmap, "PhotoFiltersProject-"+System.currentTimeMillis()+".JPEG" , "PhotoFiltersProject");
             }
             else
             {

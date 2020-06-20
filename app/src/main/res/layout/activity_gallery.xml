@@ -34,7 +34,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/gallery_btn_back"
         android:layout_width="193dp"
         android:layout_height="48dp"
         android:text="@string/back"

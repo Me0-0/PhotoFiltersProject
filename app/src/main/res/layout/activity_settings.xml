@@ -6,4 +6,167 @@
     android:layout_height="match_parent"
     tools:context=".SettingsActivity">
 
+    <Switch
+        android:id="@+id/settings_sw_open"
+        android:layout_width="124dp"
+        android:layout_height="27dp"
+        android:text="Open"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/settings_tv_user"
+        app:layout_constraintStart_toStartOf="@+id/settings_tv_user"
+        app:layout_constraintTop_toBottomOf="@+id/settings_tv_user"
+        app:layout_constraintVertical_bias="0.07999998" />
+
+    <EditText
+        android:id="@+id/settings_et_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="@+id/settings_tv1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/settings_tv1"
+        app:layout_constraintTop_toTopOf="@+id/settings_tv1" />
+
+    <TextView
+        android:id="@+id/settings_tv1"
+        android:layout_width="77dp"
+        android:layout_height="33dp"
+        android:text="Code:"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/settings_sw_open"
+        app:layout_constraintStart_toStartOf="@+id/settings_tv_user"
+        app:layout_constraintTop_toBottomOf="@+id/settings_sw_open"
+        app:layout_constraintVertical_bias="0.050000012" />
+
+    <TextView
+        android:id="@+id/settings_tv2"
+        android:layout_width="112dp"
+        android:layout_height="37dp"
+        android:text="Password:"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/settings_tv1"
+        app:layout_constraintStart_toStartOf="@+id/settings_tv1"
+        app:layout_constraintTop_toBottomOf="@+id/settings_btn_reset1"
+        app:layout_constraintVertical_bias="0.18" />
+
+    <TextView
+        android:id="@+id/settings_tv_user"
+        android:layout_width="293dp"
+        android:layout_height="57dp"
+        android:fontFamily="@font/arizonia"
+        android:textColor="@color/colorMain"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.13999999" />
+
+    <EditText
+        android:id="@+id/settings_et_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="@+id/settings_tv2"
+        app:layout_constraintEnd_toEndOf="@+id/settings_et_code"
+        app:layout_constraintStart_toStartOf="@+id/settings_et_code"
+        app:layout_constraintTop_toTopOf="@+id/settings_tv2" />
+
+    <Button
+        android:id="@+id/settings_btn_save1"
+        style="@android:style/Widget.Button.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save Code|Open"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/settings_btn_reset1"
+        app:layout_constraintEnd_toEndOf="@+id/settings_btn_back"
+        app:layout_constraintStart_toStartOf="@+id/settings_btn_sa"
+        app:layout_constraintTop_toTopOf="@+id/settings_btn_reset1" />
+
+    <Button
+        android:id="@+id/settings_btn_reset1"
+        style="@android:style/Widget.Button.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reset Code|Open"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/settings_btn_sa"
+        app:layout_constraintStart_toStartOf="@+id/settings_btn_ra"
+        app:layout_constraintTop_toBottomOf="@+id/settings_tv1"
+        app:layout_constraintVertical_bias="0.110000014" />
+
+    <Button
+        android:id="@+id/settings_btn_reset2"
+        style="@android:style/Widget.Button.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reset Password"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/settings_btn_reset1"
+        app:layout_constraintStart_toStartOf="@+id/settings_btn_reset1"
+        app:layout_constraintTop_toBottomOf="@+id/settings_tv2"
+        app:layout_constraintVertical_bias="0.19999999" />
+
+    <Button
+        android:id="@+id/settings_btn_save2"
+        style="@android:style/Widget.Button.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save Password"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/settings_btn_reset2"
+        app:layout_constraintEnd_toEndOf="@+id/settings_btn_save1"
+        app:layout_constraintStart_toStartOf="@+id/settings_btn_save1"
+        app:layout_constraintTop_toTopOf="@+id/settings_btn_reset2" />
+
+    <Button
+        android:id="@+id/settings_btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/back"
+        app:layout_constraintBottom_toBottomOf="@+id/settings_btn_sa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/settings_btn_sa"
+        app:layout_constraintTop_toTopOf="@+id/settings_btn_sa" />
+
+    <Button
+        android:id="@+id/settings_btn_sa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save All"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settings_btn_save2"
+        app:layout_constraintVertical_bias="0.3" />
+
+    <Button
+        android:id="@+id/settings_btn_ra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="reset all"
+        app:layout_constraintBottom_toBottomOf="@+id/settings_btn_sa"
+        app:layout_constraintEnd_toStartOf="@+id/settings_btn_sa"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/settings_btn_sa" />
 </androidx.constraintlayout.widget.ConstraintLayout>

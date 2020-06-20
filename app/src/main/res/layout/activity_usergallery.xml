@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UsergalleryActivity">
+
+    <TextView
+        android:id="@+id/usergallery_tv_username"
+        android:layout_width="326dp"
+        android:layout_height="61dp"
+        android:fontFamily="@font/arizonia"
+        android:textAlignment="center"
+        android:textColor="@color/colorMain"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.060000002" />
+
+    <ImageView
+        android:id="@+id/usergallery_iv_photos"
+        android:layout_width="338dp"
+        android:layout_height="299dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/usergallery_tv_username"
+        app:layout_constraintVertical_bias="0.07999998" />
+
+    <ImageButton
+        android:id="@+id/usergallery_ibtn_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/usergallery_iv_photos"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/usergallery_iv_photos"
+        app:layout_constraintTop_toBottomOf="@+id/usergallery_iv_photos"
+        app:layout_constraintVertical_bias="0.13999999"
+        app:srcCompat="@android:drawable/ic_media_ff" />
+
+    <ImageButton
+        android:id="@+id/usergallery_ibtn_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/usergallery_ibtn_right"
+        app:layout_constraintEnd_toEndOf="@+id/usergallery_iv_photos"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/usergallery_iv_photos"
+        app:layout_constraintTop_toTopOf="@+id/usergallery_ibtn_right"
+        app:srcCompat="@android:drawable/ic_media_rew" />
+
+    <Button
+        android:id="@+id/usergallery_btn_save"
+        android:layout_width="164dp"
+        android:layout_height="47dp"
+        android:text="@string/save"
+        app:layout_constraintBottom_toBottomOf="@+id/usergallery_ibtn_right"
+        app:layout_constraintEnd_toStartOf="@+id/usergallery_ibtn_right"
+        app:layout_constraintStart_toEndOf="@+id/usergallery_ibtn_left"
+        app:layout_constraintTop_toTopOf="@+id/usergallery_ibtn_right" />
+
+    <Button
+        android:id="@+id/usergallery_btn_back"
+        android:layout_width="318dp"
+        android:layout_height="43dp"
+        android:text="@string/back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/usergallery_ibtn_right"
+        app:layout_constraintStart_toStartOf="@+id/usergallery_ibtn_left"
+        app:layout_constraintTop_toBottomOf="@+id/usergallery_btn_save"
+        app:layout_constraintVertical_bias="0.22000003" />
+</androidx.constraintlayout.widget.ConstraintLayout>

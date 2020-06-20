@@ -27,7 +27,7 @@ public class Dal extends SQLiteAssetHelper {
     public boolean users_check_existence_username(String username)
     {
         SQLiteDatabase db = getWritableDatabase();
-        String qr = "SELECT _id FROM users WHERE username = '"+username+"'";
+        String qr = "SELECT * FROM users WHERE username = '"+username+"'";
         Cursor c = db.rawQuery(qr,null);
         boolean ret =  c.moveToFirst();
         c.close();
@@ -37,7 +37,7 @@ public class Dal extends SQLiteAssetHelper {
     public boolean users_check_existence_username_password(String username, String password)
     {
         SQLiteDatabase db = getWritableDatabase();
-        String qr = "SELECT _id FROM users WHERE username = '"+username+"' AND password = '"+password+"'";
+        String qr = "SELECT * FROM users WHERE username = '"+username+"' AND password = '"+password+"'";
         Cursor c = db.rawQuery(qr,null);
         boolean ret = c.moveToFirst();
         c.close();
@@ -123,7 +123,7 @@ public class Dal extends SQLiteAssetHelper {
     {
         SQLiteDatabase db = getWritableDatabase();
         String qr = "UPDATE users SET password = '"+password+"' WHERE username = '"+username+"'";
-
+        db.execSQL(qr);
     }
     //update open,code of user[username]
     public void users_update_open_code_for_username(long open, String code, String username)
@@ -155,6 +155,7 @@ public class Dal extends SQLiteAssetHelper {
                 photo.setFilter(c.getString(c.getColumnIndex("filter")));
                 photo.setOpen(c.getLong(c.getColumnIndex("open")));
                 photo.setPhoto(c.getBlob(c.getColumnIndex("photo")));
+                photo.setName(String.valueOf((c.getLong(c.getColumnIndex("_pid")))));
                 ret.add(photo);
             }while (c.moveToNext());
         }
@@ -176,6 +177,7 @@ public class Dal extends SQLiteAssetHelper {
                 photo.setFilter(c.getString(c.getColumnIndex("filter")));
                 photo.setOpen(c.getLong(c.getColumnIndex("open")));
                 photo.setPhoto(c.getBlob(c.getColumnIndex("photo")));
+                photo.setName(String.valueOf((c.getLong(c.getColumnIndex("_pid")))));
                 ret.add(photo);
             }while (c.moveToNext());
         }

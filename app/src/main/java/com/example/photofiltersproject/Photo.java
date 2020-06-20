@@ -11,6 +11,7 @@ public class Photo {
     private String filter;
     private byte[] photo;
     private long open;
+    private String name;
 
     public Photo()
     {
@@ -68,6 +69,14 @@ public class Photo {
         return b;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public boolean getOpen() {
         return open != 0;
     }
@@ -78,7 +87,7 @@ public class Photo {
     public static byte[] getBitmapToByte(Bitmap bitmap)
     {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, bos);
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
         return bos.toByteArray();
     }
 }

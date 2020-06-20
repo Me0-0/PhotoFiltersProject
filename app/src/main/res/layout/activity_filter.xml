@@ -19,7 +19,7 @@
         app:layout_constraintEnd_toEndOf="@+id/filter_iv_img"
         app:layout_constraintStart_toStartOf="@+id/filter_iv_img"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.26" />
+        app:layout_constraintVertical_bias="0.45" />
 
     <ImageView
         android:id="@+id/filter_iv_img"
@@ -69,8 +69,8 @@
 
     <Switch
         android:id="@+id/filter_sw_filter"
-        android:layout_width="130dp"
-        android:layout_height="45dp"
+        android:layout_width="153dp"
+        android:layout_height="48dp"
         android:fontFamily="@font/arizonia"
         android:text="Regular"
         android:textAlignment="center"
@@ -179,7 +179,8 @@
         app:layout_constraintBottom_toTopOf="@+id/filter_iv_img"
         app:layout_constraintEnd_toEndOf="@+id/filter_iv_img"
         app:layout_constraintStart_toStartOf="@+id/filter_iv_img"
-        app:layout_constraintTop_toBottomOf="@+id/filter_tv_title" />
+        app:layout_constraintTop_toBottomOf="@+id/filter_tv_title"
+        app:layout_constraintVertical_bias="0.36" />
 
     <TextView
         android:id="@+id/filter_tv_e2"

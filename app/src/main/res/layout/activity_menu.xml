@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MenuActivity">
+
+    <TextView
+        android:id="@+id/menu_tv_titel"
+        android:layout_width="285dp"
+        android:layout_height="58dp"
+        android:fontFamily="@font/arizonia"
+        android:textAlignment="center"
+        android:textColor="@color/colorMain"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.100000024" />
+
+    <Button
+        android:id="@+id/menu_btn_filter"
+        style="@android:style/Widget.Material.Light.Button.Toggle"
+        android:layout_width="183dp"
+        android:layout_height="45dp"
+        android:text="Filters"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/menu_tv_titel"
+        app:layout_constraintStart_toStartOf="@+id/menu_tv_titel"
+        app:layout_constraintTop_toBottomOf="@+id/menu_tv_titel"
+        app:layout_constraintVertical_bias="0.110000014" />
+
+    <Button
+        android:id="@+id/menu_btn_usergallery"
+        style="@android:style/Widget.Material.Light.Button.Toggle"
+        android:layout_width="183dp"
+        android:layout_height="45dp"
+        android:text="User Gallery"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/menu_btn_filter"
+        app:layout_constraintStart_toStartOf="@+id/menu_btn_filter"
+        app:layout_constraintTop_toBottomOf="@+id/menu_btn_filter"
+        app:layout_constraintVertical_bias="0.100000024" />
+
+    <Button
+        android:id="@+id/menu_btn_gallery"
+        style="@android:style/Widget.Material.Light.Button.Toggle"
+        android:layout_width="183dp"
+        android:layout_height="45dp"
+        android:text="Gallery"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/menu_btn_filter"
+        app:layout_constraintStart_toStartOf="@+id/menu_btn_filter"
+        app:layout_constraintTop_toBottomOf="@+id/menu_btn_usergallery"
+        app:layout_constraintVertical_bias="0.13" />
+
+    <Button
+        android:id="@+id/menu_btn_settings"
+        style="@android:style/Widget.Material.Light.Button.Toggle"
+        android:layout_width="183dp"
+        android:layout_height="45dp"
+        android:text="User Settings"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/menu_btn_filter"
+        app:layout_constraintStart_toStartOf="@+id/menu_btn_filter"
+        app:layout_constraintTop_toBottomOf="@+id/menu_btn_gallery"
+        app:layout_constraintVertical_bias="0.16000003" />
+
+    <Button
+        android:id="@+id/menu_btn_exit"
+        android:layout_width="206dp"
+        android:layout_height="52dp"
+        android:text="exit app"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/menu_tv_titel"
+        app:layout_constraintStart_toStartOf="@+id/menu_tv_titel"
+        app:layout_constraintTop_toBottomOf="@+id/menu_btn_settings"
+        app:layout_constraintVertical_bias="0.26" />
+</androidx.constraintlayout.widget.ConstraintLayout>
