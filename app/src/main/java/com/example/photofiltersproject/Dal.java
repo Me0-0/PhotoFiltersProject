@@ -172,12 +172,12 @@ public class Dal extends SQLiteAssetHelper {
         if(c.moveToFirst())
         {
             do {
+                photo = new Photo();
                 photo.setUsername(c.getString(c.getColumnIndex("username")));
                 photo.setPremium(c.getLong(c.getColumnIndex("premium")));
                 photo.setFilter(c.getString(c.getColumnIndex("filter")));
                 photo.setOpen(c.getLong(c.getColumnIndex("open")));
                 photo.setPhoto(c.getBlob(c.getColumnIndex("photo")));
-                photo.setName(String.valueOf((c.getLong(c.getColumnIndex("_pid")))));
                 ret.add(photo);
             }while (c.moveToNext());
         }
@@ -213,7 +213,7 @@ public class Dal extends SQLiteAssetHelper {
     public void photos_add_photo(String username, long premium, String filter, byte[] photo, long open)
     {
         SQLiteDatabase db = getWritableDatabase();
-        String sqlInsert = "INSERT INTO photos (username ,premioum, filter, photo,open) VALUES(?,?,?,?,?)";
+        String sqlInsert = "INSERT INTO photos (username ,premium, filter, photo,open) VALUES(?,?,?,?,?)";
         SQLiteStatement statement = db.compileStatement(sqlInsert);
         statement.bindString(1,username);
         statement.bindLong(2,premium);

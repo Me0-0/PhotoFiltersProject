@@ -46,7 +46,7 @@ public class MenuActivity extends AppCompatActivity {
 
                 if(isUser)
                 {
-                    if(true)
+                    if(!true)//test#2
                     {
                         Toast.makeText(getApplicationContext(),"Coming soon!", Toast.LENGTH_SHORT).show();
                     }
@@ -97,7 +97,7 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (true) {
-                    Toast.makeText(getApplicationContext(), "Coming soon!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Coming soon!", Toast.LENGTH_SHORT).show();//test#1 - failed
                 } else {
                     if (dal.photos_check_existence()) {
                         intent = new Intent(MenuActivity.this, GalleryActivity.class);

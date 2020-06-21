@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -24,14 +25,14 @@ public class UsergalleryActivity extends AppCompatActivity {
     ImageButton rightIBtn, leftIBtn;
     TextView userTv;
     String username;
-    Photo[] photos;
+    ArrayList<Photo> photos;
     Dal dal;
     Intent intent;
     private static final int CAMERA_REQUEST = 1888;
     private static final int WRITE_EXTERNAL_STORAGE = 2888;
     private static final int MY_CAMERA_PERMISSION_CODE = 100;
     private static final int MY_EXTERNAL_PERMISSION_CODE = 200;
-    int pos = 0;
+    int pos;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +40,7 @@ public class UsergalleryActivity extends AppCompatActivity {
         dal = new Dal(this);
         intent = this.getIntent();
         username = intent.getStringExtra("username");
-        dal.photos_get_photos_by_username(username).toArray(photos);
+        photos = dal.photos_get_photos_by_username(username);
         rightIBtn = (ImageButton)findViewById(R.id.usergallery_ibtn_right);//
         leftIBtn = (ImageButton)findViewById(R.id.usergallery_ibtn_left);//
         userIv = (ImageView)findViewById(R.id.usergallery_iv_photos);//
@@ -47,13 +48,14 @@ public class UsergalleryActivity extends AppCompatActivity {
         saveBtn = (Button)findViewById(R.id.usergallery_btn_save);//
         backBtn = (Button)findViewById(R.id.usergallery_btn_back);//
 
+        pos = 0;
         userTv.setText(username);
-        userIv.setImageBitmap(photos[pos].getBitmapPhoto());
+        setBitmapPhoto();
 
         rightIBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(pos < photos.length -1)
+                if(pos < photos.size() -1)
                 {
                     pos++;
                 }
@@ -61,7 +63,7 @@ public class UsergalleryActivity extends AppCompatActivity {
                 {
                     pos = 0;
                 }
-                userIv.setImageBitmap(photos[pos].getBitmapPhoto());
+                setBitmapPhoto();
             }
         });
         leftIBtn.setOnClickListener(new View.OnClickListener() {
@@ -73,9 +75,9 @@ public class UsergalleryActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    pos = photos.length -1;
+                    pos = photos.size() -1;
                 }
-                userIv.setImageBitmap(photos[pos].getBitmapPhoto());
+                setBitmapPhoto();
             }
         });
 
@@ -95,7 +97,7 @@ public class UsergalleryActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    MediaStore.Images.Media.insertImage(getContentResolver(), photos[pos].getBitmapPhoto(), filename , "PhotoFiltersProject");
+                    MediaStore.Images.Media.insertImage(getContentResolver(), photos.get(pos).getBitmapPhoto(), filename , "PhotoFiltersProject");
                 }
             }
         });
@@ -122,7 +124,7 @@ public class UsergalleryActivity extends AppCompatActivity {
             if(grantResults[0] == PackageManager.PERMISSION_GRANTED)
             {
                 Toast.makeText(this, "external permission granted", Toast.LENGTH_LONG).show();
-                MediaStore.Images.Media.insertImage(getContentResolver(), photos[pos].getBitmapPhoto(), "PhotoFiltersProject-"+System.currentTimeMillis()+".JPEG" , "PhotoFiltersProject");
+                MediaStore.Images.Media.insertImage(getContentResolver(), photos.get(pos).getBitmapPhoto(), "PhotoFiltersProject-"+System.currentTimeMillis()+".JPEG" , "PhotoFiltersProject");
             }
             else
             {
@@ -130,5 +132,11 @@ public class UsergalleryActivity extends AppCompatActivity {
             }
         }
 
+    }
+    private void setBitmapPhoto()
+    {
+        Bitmap tmp = Bitmap.createBitmap(photos.get(pos).getBitmapPhoto());
+        userIv.setImageBitmap(tmp);
+        //Toast.makeText(getApplicationContext(),"Test",Toast.LENGTH_SHORT).show();
     }
 }

@@ -120,10 +120,10 @@ public class FilterActivity extends AppCompatActivity {
                 {
                     MediaStore.Images.Media.insertImage(getContentResolver(), tmpBitmap, filename , "PhotoFiltersProject");
                 }
-                if(isUser)
+                if(isUser)//test#1
                 {
-                    //dal.photos_add_photo(username,isRegular?0:1,filterTv.getText().toString(),Photo.getBitmapToByte(tmpBitmap),dal.users_get_open_by_username(username)?1:0);
-                    Toast.makeText(getApplicationContext(),"Save To DB: Coming soon, note - the photo was saved to gallery", Toast.LENGTH_SHORT).show();
+                    dal.photos_add_photo(username,isRegular?0:1,filterTv.getText().toString(),Photo.getBitmapToByte(tmpBitmap),dal.users_get_open_by_username(username)?1:0);
+                    //Toast.makeText(getApplicationContext(),"Save To DB: Coming soon, note - the photo was saved to gallery", Toast.LENGTH_SHORT).show();
                 }
 
             }
